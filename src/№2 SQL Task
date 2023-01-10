@@ -1,0 +1,22 @@
+select * from cars;
+select brand,model,price from cars;                                     --№1 Car tablicanyn ichinen tolko mashinanyn brendin jana modelin jana baasyn chygarynyz
+select count(*) as total from cars;                                     --№2 Car tablicasynyn ichinen baardyk mashinalardyn sanyn chygarynyz
+select * from cars where brand='Hyundai';                               --№3 Brendi Hyundaiga barabar bolgon baardyk mashinalardy chygarynyz
+select * from cars where color='Red' or color='Blue';                   --№4 Baardyk Kyzyl jana Kok bolgon mashinalardy chygarynyz
+select * from cars where year_of_issue between extract
+(year from date '2000-1-1') and extract(year from date '2010-1-1');     --№5 Baardyk 2000 menen 2010chu jyldary arasynda chygarylgan mashinalardy chygarynyz
+select count(*) as total from cars where brand='Chevrolet';             --№6 Chevrolet brendinde kancha machine bar ekendigin chygarynyz
+select round(avg(year_of_issue)) as a_v_g from cars;                    --№7 Mashinalardyn jyldarynyn ortocho maanisin* (srednoe znachenie) tabynyz
+select * from cars where brand='Audi' or brand='Ford'
+                    or brand='Toyota' or brand='Kia';                   --№8 Audi, Toyota, Kia jana Ford, ushul markadagy baardyk mashinalardy chygargyla
+select * from cars where model like 'T%';                               --№9 Mashinanyn modeli ‘T’ menen bashtalgan mashinalardy chygarynyz
+select * from cars where model like '%e';                               --№10 Mashinanyn modeli ‘e’ menen button mashinalardy chygarynyz
+select * from cars where brand like '_____';                            --№11  5 symbol kamtygan brandderdi consolgo chygarynyz
+select 'Mercedes-Benz',sum(price) from cars where brand='Mercedes-Benz';--№12 Brandi Mercedes-Benz bolgon mashinalardyn obshiy baasyn chygarynyz
+select * from cars where price=(select max(price) from cars)
+                      or price=(select min(price) from cars);           --№13 En kymbat jana en arzan mashinany chygarynyz
+select * from cars where brand<>'Toyota';                               --№14 TOYOTAdan bashkasynyn baaryn chygarynyz
+select * from cars order by price desc limit 10;                        --№15 En kymbat 10 mahsinany chygarynyz
+select * from cars order by year_of_issue desc offset 5 limit 10 ;      --№16 En jany mashinalardyn 5ten bashtap 15chige cheinki mashinalardy chygarynyz
+select * from cars where year_of_issue<1995 or year_of_issue>2005;      --№17 1995 jana 2005 jyldar arasyndagy mashinalardan bashka baardyk mashinalardy chygarynyz
+select * from cars  where color='Pink';                                 --№18 En kop mashinasy bar tustordu korsotunuzdor i kancha mashinesi bar ekendigin dagy korsotunuzdor

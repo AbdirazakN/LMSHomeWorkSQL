@@ -1,0 +1,15 @@
+SELECT CustomerName,City FROM Customers;                                                 --1. Кардардын атын, шаарын чыгарыныз
+SELECT distinct Country FROM [Customers];                                                --2. Кардарлардын олкосун (уникалдуу) чыгарыныз
+SELECT count(distinct Country) FROM [Customers] ;                                        --3. Кардарлардын олкосунун (уникалдуу) санын чыгарыш керек
+SELECT CustomerName FROM [Customers] where Country='Mexico';                             --4.Мексикалык кардарларды чыгарыныз
+SELECT City,Address FROM Customers where CustomerID='1';                                 --5. Айдиси#1 болгон кардардын шаарын, дарегин чыгарыныз
+SELECT * from Customers where Country='Germany' or Country='Spain';                      --6. Германиялык же Испаниялык кардарларды чыгарыныз
+SELECT * from Customers order by Country;
+SELECT * from Customers order by CustomerName desc;                                      --7. Кардарлардын олкосун алфавит менен, атын алфавиттин аягы менен сорттоп чыгарыныз
+SELECT * from Customers where Address=null;                                              --8. Дареги жазылбаган кардарларды чыгарыныз
+SELECT * FROM Products where Price=(select min(Price) from Products);                    --9. Продуктулардын минимальный баасын чыгарыныз
+SELECT count(*) FROM Products;                                                           --10. Канча продукт бар экенин чыгарыныз
+SELECT CustomerName FROM Customers where CustomerName like 'A%';                         --11. Баш тамгасы ‘А’ башталган бардык кардарлардын атын чыгарыныз
+SELECT * from Customers where Country='Germany' or Country='British' or Country='France';--12. Германиялык, Франциялык, Британиялык кардарларды чыгарыныз
+SELECT * from Customers where Country=(select Country from Suppliers);                   --13. Поставщик менен бир олкодон болгон кардарларды чыгарыныз
+SELECT * FROM Orders where extract(year from OrderDate)=1996;                            --14. 1996-жылкы жалпы заказдарды чыгарыныз
